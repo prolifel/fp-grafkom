@@ -20,7 +20,7 @@ const [useStore, api] = create((set, get) => {
     health: 100,
     lasers: [],
     explosions: [],
-    rocks: randomData(100, track, 150, 8, () => 1 + Math.random() * 2.5),
+    rocks: randomData(200, track, 150, 8, () => 1 + Math.random() * 2.5),
     enemies: randomData(10, track, 20, 15, 1),
 
     mutation: {
@@ -90,7 +90,7 @@ const [useStore, api] = create((set, get) => {
               enemies: state.enemies.filter(enemy => !e.find(e => e.guid === enemy.guid))
             }))
           }
-          // if (a.some(data => data.distance < 15)) set(state => ({ health: state.health - 1 }))
+          if (a.some(data => data.distance < 15)) set(state => ({ health: state.health - 1 }))
         })
       },
       shoot() {

@@ -9,11 +9,11 @@ export default function Hud() {
   const toggle = useStore(state => state.actions.toggleSound)
 
   const seconds = useRef()
-  // useEffect(() => {
-  //   const t = Date.now()
-  //   const i = setInterval(() => (seconds.current.innerText = ((Date.now() - t) / 1000).toFixed(1)), 100)
-  //   return () => clearInterval(i)
-  // }, [])
+  useEffect(() => {
+    const t = Date.now()
+    const i = setInterval(() => (seconds.current.innerText = ((Date.now() - t) / 1000).toFixed(1)), 100)
+    return () => clearInterval(i)
+  }, [])
 
   const score = useMemo(() => (points >= 1000 ? (points / 1000).toFixed(1) + 'K' : points), [points])
   return (
@@ -31,13 +31,15 @@ export default function Hud() {
         <a href="https://github.com/react-spring/react-three-fiber">github</a> */}
       </UpperRight>
       <LowerLeft>
-        {/* <h2 ref={seconds}>0.0</h2>
-        <h1>{score}</h1> */}
+        <h2 ref={seconds}>
+          0.0
+        </h2>
+        <h1>Skor: {score}</h1>
       </LowerLeft>
       <Global />
-      {/* <LowerRight>
+      <LowerRight>
         <div style={{ width: health + '%' }} />
-      </LowerRight> */}
+      </LowerRight>
     </>
   )
 }
@@ -84,52 +86,53 @@ const UpperRight = styled.div`
   }
 `
 
-const LowerLeft = styled.div`
+const LowerLeft = styled.span`
   ${base}
-  bottom: 5px;
+  top: 50px;
   left: 50px;
-  transform: skew(-5deg, -10deg);
-  width: 200px;
+  // transform: skew(-5deg, -10deg);
+  width: 500px;
+  display: inline-block;
   & > h1 {
     margin: 0;
-    font-size: 14em;
+    font-size: 3em;
     line-height: 1em;
   }
   & > h2 {
     margin: 0;
-    font-size: 4em;
+    font-size: 2em;
     line-height: 1em;
   }
   @media only screen and (max-width: 900px) {
     bottom: 30px;
     & > h1 {
-      font-size: 6em !important;
+      font-size: 1em !important;
     }
     & > h2 {
-      font-size: 3em !important;
+      font-size: 0.5em !important;
     }
   }
 `
 
-// const LowerRight = styled.div`
-//   ${base}
-//   bottom: 70px;
-//   right: 50px;
-//   transform: skew(5deg, 10deg);
-//   height: 60px;
-//   width: 200px;
-//   background: black;
-//   & > div {
-//     height: 100%;
-//     background: indianred;
-//   }
+const LowerRight = styled.div`
+  
+  bottom: 70px;
+  right: 50px;
+  // transform: skew(5deg, 10deg);
+  height: 60px;
+  width: 200px;
+  background: black;
+  & > div {
+    height: 100%;
+    background: indianred;
+  }
 
-//   @media only screen and (max-width: 900px) {
-//     bottom: 50px;
-//     height: 40px;
-//     width: 150px;
-//   }
-// `
+  @media only screen and (max-width: 900px) {
+    bottom: 50px;
+    height: 40px;
+    width: 150px;
+  }
+`
 
 const Global = createGlobalStyle`
   * {
