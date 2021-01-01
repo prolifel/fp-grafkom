@@ -24,7 +24,7 @@ const Rock = React.memo(({ gltf, data }) => {
         scale={[5, 5, 5]}>
         <mesh>
           <bufferGeometry attach="geometry" {...gltf.__$[10].geometry} />
-          <meshStandardMaterial attach="material" {...gltf.__$[10].material} roughness={1} metalness={1} />
+          <meshStandardMaterial attach="material" roughness={1} metalness={1} color="indianred" />
         </mesh>
       </object3D>
     </group>

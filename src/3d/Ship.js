@@ -6,6 +6,7 @@ import useStore from '../store'
 
 const geometry = new THREE.BoxBufferGeometry(1, 1, 40)
 const lightgreen = new THREE.Color('lightgreen')
+const green = new THREE.Color('green')
 const hotpink = new THREE.Color('hotpink')
 const laserMaterial = new THREE.MeshBasicMaterial({ color: lightgreen })
 const crossMaterial = new THREE.MeshBasicMaterial({ color: hotpink, fog: false })
@@ -25,30 +26,30 @@ export default function Ship() {
   const target = useRef()
 
   useFrame(() => {
-    // main.current.position.z = Math.sin(clock.getElapsedTime() * 40) * Math.PI * 0.1
-    // main.current.rotation.z += (mouse.x / 500 - main.current.rotation.z) * 0.1
-    // main.current.rotation.x += (-mouse.y / 1200 - main.current.rotation.x) * 0.1
-    // main.current.rotation.y += (-mouse.x / 1200 - main.current.rotation.y) * 0.1
-    // main.current.position.x += (mouse.x / 10 - main.current.position.x) * 0.1
-    // main.current.position.y += (25 + -mouse.y / 10 - main.current.position.y) * 0.1
+    main.current.position.z = Math.sin(clock.getElapsedTime() * 40) * Math.PI * 0.1
+    main.current.rotation.z += (mouse.x / 500 - main.current.rotation.z) * 0.1
+    main.current.rotation.x += (-mouse.y / 1200 - main.current.rotation.x) * 0.1
+    main.current.rotation.y += (-mouse.x / 1200 - main.current.rotation.y) * 0.1
+    main.current.position.x += (mouse.x / 10 - main.current.position.x) * 0.1
+    main.current.position.y += (25 + -mouse.y / 10 - main.current.position.y) * 0.1
     // exhaust.current.scale.x = 1 + Math.sin(clock.getElapsedTime() * 200)
     // exhaust.current.scale.y = 1 + Math.sin(clock.getElapsedTime() * 200)
     for (let i = 0; i < lasers.length; i++) {
       const group = laserGroup.current.children[i]
       group.position.z -= 20
     }
-    laserLight.current.intensity += ((lasers.length && Date.now() - lasers[lasers.length - 1] < 100 ? 20 : 0) - laserLight.current.intensity) * 0.3
+    laserLight.current.intensity += ((lasers.length && Date.now() - lasers[lasers.length - 1] < 100 ? 20 : 0) - laserLight.current.intensity) * 0.1
 
     // Get ships orientation and save it to the stores ray
     main.current.getWorldPosition(position)
     main.current.getWorldDirection(direction)
     // biar bisa hit virus
-    // ray.origin.copy(position)
-    // ray.direction.copy(direction.negate())
+    ray.origin.copy(position)
+    ray.direction.copy(direction.negate())
 
     // ...
-    crossMaterial.color = mutation.hits ? lightgreen : hotpink
-    cross.current.visible = !mutation.hits
+    crossMaterial.color = mutation.hits ? green : hotpink
+    // cross.current.visible = !mutation.hits
     // target.current.visible = !!mutation.hits
   })
 
@@ -63,7 +64,7 @@ export default function Ship() {
             <boxBufferGeometry attach="geometry" args={[2, 20, 2]} />
           </mesh>
         </group>
-        {/* <group ref={target} position={[0, 0, -300]} name="target">
+        <group ref={target} position={[0, 0, -300]} name="target">
           <mesh position={[0, 20, 0]} renderOrder={1000} material={crossMaterial}>
             <boxBufferGeometry attach="geometry" args={[40, 2, 2]} />
           </mesh>
@@ -76,7 +77,7 @@ export default function Ship() {
           <mesh position={[-20, 0, 0]} renderOrder={1000} material={crossMaterial}>
             <boxBufferGeometry attach="geometry" args={[2, 40, 2]} />
           </mesh>
-        </group> */}
+        </group>
         <pointLight ref={laserLight} position={[0, 0, -20]} distance={100} intensity={0} color="lightgreen" />
         <group ref={laserGroup}>
           {lasers.map((t, i) => (
