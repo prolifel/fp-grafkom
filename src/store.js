@@ -63,13 +63,13 @@ const [useStore, api] = create((set, get) => {
           mutation.position.multiplyScalar(mutation.scale)
 
           // test for wormhole/warp
-          let warping = false
-          if (t > 0.3 && t < 0.4) {
-            if (!warping) {
-              warping = true
-              playAudio(audio.warp)
-            }
-          } else if (t > 0.5) warping = false
+          // let warping = false
+          // if (t > 0.3 && t < 0.4) {
+          //   if (!warping) {
+          //     warping = true
+          //     playAudio(audio.warp)
+          //   }
+          // } else if (t > 0.5) warping = false
 
           // test for hits
           const r = rocks.filter(actions.test)
@@ -134,22 +134,22 @@ function randomData(count, track, radius, size, scale) {
   })
 }
 
-function randomRings(count, track) {
-  let temp = []
-  let t = 0.4
-  for (let i = 0; i < count; i++) {
-    t += 0.003
-    const pos = track.parameters.path.getPointAt(t)
-    pos.multiplyScalar(15)
-    const segments = track.tangents.length
-    const pickt = t * segments
-    const pick = Math.floor(pickt)
-    const lookAt = track.parameters.path.getPointAt((t + 1 / track.parameters.path.getLength()) % 1).multiplyScalar(15)
-    const matrix = new THREE.Matrix4().lookAt(pos, lookAt, track.binormals[pick])
-    temp.push([pos.toArray(), matrix])
-  }
-  return temp
-}
+// function randomRings(count, track) {
+//   let temp = []
+//   let t = 0.4
+//   for (let i = 0; i < count; i++) {
+//     t += 0.003
+//     const pos = track.parameters.path.getPointAt(t)
+//     pos.multiplyScalar(15)
+//     const segments = track.tangents.length
+//     const pickt = t * segments
+//     const pick = Math.floor(pickt)
+//     const lookAt = track.parameters.path.getPointAt((t + 1 / track.parameters.path.getLength()) % 1).multiplyScalar(15)
+//     const matrix = new THREE.Matrix4().lookAt(pos, lookAt, track.binormals[pick])
+//     temp.push([pos.toArray(), matrix])
+//   }
+//   return temp
+// }
 
 function playAudio(audio, volume = 1, loop = false) {
   if (api.getState().sound) {
