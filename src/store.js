@@ -95,6 +95,7 @@ const [useStore, api] = create((set, get) => {
             set(state => ({ health: state.health - 1 }))
             if (get().health <= 0) {
               // TODO: pindah ke game over
+              // Solve: Game Over ada di Store.js
               console.log("MATI KON COK")
             }
             // console.log(get().health)

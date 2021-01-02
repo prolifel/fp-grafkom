@@ -38,8 +38,22 @@ export default function Hud() {
       </LowerLeft>
       <Global />
       <LowerRight>
-        <div style={{ width: health + '%' }} />
+        {health <= 0 &&
+          <>
+            {/* TODO: buat HTML Game Over */}
+            <br/>
+            <br/>
+            {/* <br/> */}
+            OKEEEE
+          </>
+        }
+        {health > 0 &&
+          <>
+            <div style={{ width: health + '%' }} />
+          </>
+        }
       </LowerRight>
+
     </>
   )
 }
@@ -90,6 +104,33 @@ const LowerLeft = styled.span`
   ${base}
   top: 50px;
   left: 50px;
+  width: 500px;
+  display: inline-block;
+  & > h1 {
+    margin: 0;
+    font-size: 3em;
+    line-height: 1em;
+  }
+  & > h2 {
+    margin: 0;
+    font-size: 2em;
+    line-height: 1em;
+  }
+  @media only screen and (max-width: 900px) {
+    bottom: 30px;
+    & > h1 {
+      font-size: 1em !important;
+    }
+    & > h2 {
+      font-size: 0.5em !important;
+    }
+  }
+`
+
+const test = styled.span`
+  ${base}
+  top: 50px;
+  left: 500px;
   width: 500px;
   display: inline-block;
   & > h1 {
