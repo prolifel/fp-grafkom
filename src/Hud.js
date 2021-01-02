@@ -90,7 +90,6 @@ const LowerLeft = styled.span`
   ${base}
   top: 50px;
   left: 50px;
-  // transform: skew(-5deg, -10deg);
   width: 500px;
   display: inline-block;
   & > h1 {
@@ -115,16 +114,17 @@ const LowerLeft = styled.span`
 `
 
 const LowerRight = styled.div`
-  
+  position: absolute;
+  pointer-events: none;
   bottom: 70px;
   right: 50px;
-  // transform: skew(5deg, 10deg);
-  height: 60px;
+  height: 40px;
   width: 200px;
   background: black;
   & > div {
     height: 100%;
-    background: indianred;
+    background: rgb(90,255,98);
+    background: linear-gradient(-90deg, rgba(90,255,98,1) 0%, rgba(45,175,49,1) 100%);
   }
 
   @media only screen and (max-width: 900px) {

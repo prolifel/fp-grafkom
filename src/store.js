@@ -12,6 +12,7 @@ const [useStore, api] = create((set, get) => {
   let cancelLaserTO = undefined
   let cancelExplosionTO = undefined
   const box = new THREE.Box3()
+  // console.log(state.health)
 
   return {
     sound: false,
@@ -90,7 +91,14 @@ const [useStore, api] = create((set, get) => {
               enemies: state.enemies.filter(enemy => !e.find(e => e.guid === enemy.guid))
             }))
           }
-          if (a.some(data => data.distance < 15)) set(state => ({ health: state.health - 1 }))
+          if (a.some(data => data.distance < 15)) {
+            set(state => ({ health: state.health - 1 }))
+            if (get().health <= 0) {
+              // TODO: pindah ke game over
+              console.log("MATI KON COK")
+            }
+            // console.log(get().health)
+          }
         })
       },
       shoot() {
