@@ -13,12 +13,12 @@ export default function Hud() {
     from: { opacity: 0 },
   })
 
-  const seconds = useRef()
-  useEffect(() => {
-    const t = Date.now()
-    const i = setInterval(() => (seconds.current.innerText = ((Date.now() - t) / 1000).toFixed(1)), 100)
-    return () => clearInterval(i)
-  }, [])
+  // const seconds = useRef()
+  // useEffect(() => {
+  //   const t = Date.now()
+  //   const i = setInterval(() => (seconds.current.innerText = ((Date.now() - t) / 1000).toFixed(1)), 100)
+  //   return () => clearInterval(i)
+  // }, [])
 
   const score = useMemo(() => (points >= 1000 ? (points / 1000).toFixed(1) + 'K' : points), [points])
   return (
@@ -36,25 +36,25 @@ export default function Hud() {
         <a href="https://github.com/react-spring/react-three-fiber">github</a> */}
       </UpperRight>
       <LowerLeft>
-        <h2 ref={seconds}>
+        {/* <h2 ref={seconds}>
           0.0
-        </h2>
+        </h2> */}
         <h1>Skor: {score}</h1>
       </LowerLeft>
       <Global />
       <LowerRight>
-        {health > 90 &&
+        {health > 0 &&
           <>
             <div style={{ width: health + '%' }} />
           </>
         }
       </LowerRight>
-      {health <= 90 &&
+      {health <= 0 &&
         <>
           {/* TODO: buat HTML Game Over */}
           <animated.div style={anim}>
             <Gameover>
-              OITTT
+              Game Over
             </Gameover>
           </animated.div>
         </>
@@ -83,7 +83,7 @@ const Gameover = styled.div`
   line-height: 1em;
   color: indianred;
   top: 40px;
-  left: 500px;
+  left: 450px;
   font-size: 14em;
 `
 

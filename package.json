@@ -12,12 +12,8 @@
     "react-reconciler": "0.0.0-experimental-f6b8d31a7",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-<<<<<<< HEAD
     "react-spring": "^8.0.27",
     "react-three-fiber": "^4.2.4",
-=======
-    "react-three-fiber": "^4.2.21",
->>>>>>> 6799eb867351f681bd07cc993f9fd3e3dde340f5
     "scheduler": "0.0.0-experimental-f6b8d31a7",
     "styled-components": "5.1.0",
     "three": "^0.116.1",
