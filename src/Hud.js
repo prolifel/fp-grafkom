@@ -1,5 +1,6 @@
 import React, { useMemo, useRef, useEffect } from 'react'
 import styled, { css, createGlobalStyle } from 'styled-components'
+import { useSpring, animated } from 'react-spring'
 import useStore from './store'
 
 export default function Hud() {
@@ -7,6 +8,10 @@ export default function Hud() {
   const health = useStore(state => state.health)
   const sound = useStore(state => state.sound)
   const toggle = useStore(state => state.actions.toggleSound)
+  const anim = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+  })
 
   const seconds = useRef()
   useEffect(() => {
@@ -38,22 +43,22 @@ export default function Hud() {
       </LowerLeft>
       <Global />
       <LowerRight>
-        {health <= 0 &&
-          <>
-            {/* TODO: buat HTML Game Over */}
-            <br/>
-            <br/>
-            {/* <br/> */}
-            OKEEEE
-          </>
-        }
-        {health > 0 &&
+        {health > 90 &&
           <>
             <div style={{ width: health + '%' }} />
           </>
         }
       </LowerRight>
-
+      {health <= 90 &&
+        <>
+          {/* TODO: buat HTML Game Over */}
+          <animated.div style={anim}>
+            <Gameover>
+              OITTT
+            </Gameover>
+          </animated.div>
+        </>
+      }
     </>
   )
 }
@@ -67,6 +72,19 @@ const base = css`
   line-height: 1em;
   pointer-events: none;
   color: indianred;
+`
+
+const Gameover = styled.div`
+  font-family: 'Teko', sans-serif;
+  position: absolute;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-variant-numeric: slashed-zero tabular-nums;
+  line-height: 1em;
+  color: indianred;
+  top: 40px;
+  left: 500px;
+  font-size: 14em;
 `
 
 const UpperLeft = styled.div`
