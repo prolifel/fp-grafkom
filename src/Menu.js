@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDom from 'react-dom';
+import "./Menu.css"
 import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
@@ -19,20 +21,40 @@ class Menu extends React.Component{
         })
     }
 
+
+    //render biasa
     render(){
         return(
+            
             <div>
-                <Link to="/Game">
-                    <Button variant="primary" className="m-4" size="lg">
-                        {this.props.title}
-                    </Button>
-                </Link>
-                <Button variant="secondary" onClick={ ()=>this.increment() }>
-                    {this.state.number}
-                </Button>
+                
+                <div class= "container-xl">
+                    <h1>COVID FIGHTER</h1>
+                    <p></p>
+
+                </div>
+
+                <div class="container-xl">
+                    <div class = "row justify-content-center">
+                    {/* <div class = "tombol"> */}
+                        <Link to="/Game">
+                            <Button  variant="primary" className="m-4" size="lg">
+                                {this.props.title}
+                            </Button>
+                        </Link>
+                        {/* <Button variant="secondary" onClick={ ()=>this.increment() }> */}
+                            {/* {this.state.number} */}
+                        {/* </Button> */}
+                    {/* </div> */}
+                    </div>
+                </div>
+                
             </div>
         )
     }
+
+    //react dom
+
 }
 
 export default Menu;
