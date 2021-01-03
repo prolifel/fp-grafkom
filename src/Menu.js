@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDom from 'react-dom';
+import "./Menu.css"
 import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
@@ -19,9 +21,18 @@ class Menu extends React.Component{
         })
     }
 
+
+    //render biasa
     render(){
         return(
+            
             <div>
+                
+                <div>
+                <h1>Hello Style!</h1>
+                <p>Add a little style!.</p>
+
+                </div>
                 <Link to="/Game">
                     <Button variant="primary" className="m-4" size="lg">
                         {this.props.title}
@@ -33,6 +44,9 @@ class Menu extends React.Component{
             </div>
         )
     }
+
+    //react dom
+
 }
 
 export default Menu;
