@@ -23,11 +23,11 @@ export default function Hud() {
   const score = useMemo(() => (points >= 1000 ? (points / 1000).toFixed(1) + 'K' : points), [points])
   return (
     <>
-      <UpperLeft onClick={() => toggle()}>
-        {/* sound
+      <UpperRight onClick={() => toggle()}>
+        sound
         <br />
-        {sound ? 'off' : 'on'} */}
-      </UpperLeft>
+        {sound ? 'off' : 'on'}
+      </UpperRight>
       <UpperRight>
         {/* <a href="https://codesandbox.io/s/react-three-fiber-untitled-game-4pp5r">source</a>
         <br />
