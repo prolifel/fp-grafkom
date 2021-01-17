@@ -7,11 +7,11 @@
   "dependencies": {
     "bootstrap": "^4.5.3",
     "react": "0.0.0-experimental-f6b8d31a7",
-    "react-bootstrap": "^1.4.0",
+    "react-bootstrap": "^1.4.3",
     "react-dom": "0.0.0-experimental-f6b8d31a7",
     "react-reconciler": "0.0.0-experimental-f6b8d31a7",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^4.0.1",
     "react-spring": "^8.0.27",
     "react-three-fiber": "^4.2.4",
     "scheduler": "0.0.0-experimental-f6b8d31a7",

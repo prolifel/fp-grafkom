@@ -9,7 +9,7 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path={"/"} component={()=><Menu title="Start Game"/>} />
+        <Route exact path={"/"} component={()=><Menu title="Play Game !"/>} />
         {/* <Route exact path={"/"} component={()=><index2 title="Start Game"/>} /> */}
         {/* <Route exact path={"/"} component={()=><Menu2 />} /> */}
         <Route exact path={"/game"} component={Game} />
