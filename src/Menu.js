@@ -84,11 +84,23 @@ class Menu extends React.Component{
 
 
                             <Modal show={this.state.isOpen} onHide={this.closeModal}>
-                            <Modal.Header>
-                                <Modal.Title className = "my-modal">Modal heading</Modal.Title>
+                            <Modal.Header className = "my-modal">
+                                <Modal.Title className = "my-modal">
+                                    How To Play ?
+                                </Modal.Title>
                             </Modal.Header>
                             <Modal.Body className = "my-modal">
-                                dawdasdwad
+                                1. Gunakan mouse untuk mengarahkan pesawat
+                                <br></br>
+                                2. Klik mouse kiri untuk menembak
+                                <br></br>
+                                3. Arahkan laser ke virus yang ada
+                                <br></br>
+                                4. Apabila terkena virus nyawa akan berkurang
+                                <br></br>
+                                5. Setiap tembakan yang terkena virus maka player akan mendapatkan point
+                                <br></br>
+                                6. Kumpulkan point sebanyak-banyaknya
                             </Modal.Body>
                             <Modal.Footer className = "my-modal">
                                 <Button variant="secondary" onClick={this.closeModal}>
